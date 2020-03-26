@@ -1,20 +1,22 @@
-type Pizza = {
+interface Sizes {
+    sizes: string[]
+};
+
+interface Pizza extends Sizes {
     name: string,
-    toppings: number
+    getAvailableSizes(): string[]
 };
 
-const pizza: Pizza = {
-    name: 'Napoletana',
-    toppings:4
-};
+let pizza: Pizza;
 
-const serialzedPizza = JSON.stringify(pizza);
-
-function getNameFromSerializedPizza(jsonObject: string): string {
-    // 'cast' result of JSON.parse to type Pizza
-    return (JSON.parse(jsonObject) as Pizza).name;
+function createPizza(name: string, sizes: string[]): Pizza {
+    return {
+        name,
+        sizes,
+        getAvailableSizes() { return this.sizes; }
+    };
 }
 
+pizza = createPizza('Fiorentina', ['small', 'large']);
 console.log(pizza);
-console.log(`serialized pizza = ${serialzedPizza}`);
-console.log(`name of serialized pizza = ${getNameFromSerializedPizza(serialzedPizza)}`);
+console.log(pizza.getAvailableSizes());
