@@ -1,9 +1,20 @@
-type SizeType = 'small' | 'medium' | 'large';
-type CallbackType = (size: SizeType) => void;
+type Pizza = {
+    name: string,
+    toppings: number
+};
 
-let pizzaSize: SizeType = 'medium';
+const pizza: Pizza = {
+    name: 'Napoletana',
+    toppings:4
+};
 
-const selectSize: CallbackType = (x) => { pizzaSize = x; }
+const serialzedPizza = JSON.stringify(pizza);
 
-selectSize('small');
-console.log(`size = ${pizzaSize}`);
+function getNameFromSerializedPizza(jsonObject: string): string {
+    // 'cast' result of JSON.parse to type Pizza
+    return (JSON.parse(jsonObject) as Pizza).name;
+}
+
+console.log(pizza);
+console.log(`serialized pizza = ${serialzedPizza}`);
+console.log(`name of serialized pizza = ${getNameFromSerializedPizza(serialzedPizza)}`);
