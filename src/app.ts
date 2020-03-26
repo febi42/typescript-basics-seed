@@ -1,9 +1,13 @@
-const pizzaCost: number = 10;
-const pizzaToppings: number = 2;
+// declare coupon of type string OR null
+// - this is required when setting (type checking) "strict": true
+// - actually legal is "... coupon: string | number", but does not make a lot of sense...
+let coupon: string | null = 'pizza25';
 
-function calculatePrice(cost: number, toppings: number): number {
-    return cost + 1.5 * toppings;
-};
+function removeCoupon(): void {
+    coupon = null;
+}
 
-const price: number = calculatePrice(pizzaCost, pizzaToppings)
-console.log(`pizza costs = ${price}`);
+console.log(coupon);
+
+removeCoupon();
+console.log(coupon);
