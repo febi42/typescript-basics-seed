@@ -1,14 +1,5 @@
-let pizza: {
-    name: string,
-    price: number,
-    getName(): string,
-}
+let pizza: [string, number, boolean]
 
-pizza = {
-    name: 'Pepperoni',
-    price: 20,
-    getName() { return this.name }
-}
+pizza = ['Pepperoni', 20, true]
 
-console.log(pizza.name);
-console.log(pizza.getName());
+console.log(pizza);
