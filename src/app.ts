@@ -1,5 +1,9 @@
-let pizza: [string, number, boolean]
+type SizeType = 'small' | 'medium' | 'large';
+type CallbackType = (size: SizeType) => void;
 
-pizza = ['Pepperoni', 20, true]
+let pizzaSize: SizeType = 'medium';
 
-console.log(pizza);
+const selectSize: CallbackType = (x) => { pizzaSize = x; }
+
+selectSize('small');
+console.log(`size = ${pizzaSize}`);
