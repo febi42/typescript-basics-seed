@@ -6,34 +6,23 @@ class Sizes {
     set availableSizes(sizes: string[]) { this.sizes = sizes; }
 }
 
-const sizes = new Sizes(['small', 'medium']);
-
-// we can now access 'availableSizes'
-// ... but also 'sizes' ?!
-// (cannot make 'sizes' private...)
-console.log(sizes.sizes);
-console.log(sizes.availableSizes);
-
-sizes.sizes = ['medium', 'large'];
-sizes.availableSizes = ['medium', 'large'];
-console.log(sizes.sizes);
-console.log(sizes.availableSizes);
-
-class Pizza {
+class Pizza extends Sizes {
     public toppings: string[] = [];
 
-    constructor(readonly name: string) {}
+    constructor(
+        readonly name: string,
+        public sizes: string[]
+    ) {
+        super(sizes);
+    }
 
     addTopping(topping: string) {
         this.toppings.push(topping);
     }
 }
 
-const pizza = new Pizza('Pepperoni');
+const pizza = new Pizza('Pepperoni', ['small', 'medium', 'large']);
 pizza.addTopping('pepperoni');
 
-// error - cannot write pizza.name
-// pizza.name = 'febi';
-
 console.log(pizza.name);
-console.log(pizza);
+console.log(pizza.availableSizes);
