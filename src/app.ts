@@ -1,10 +1,7 @@
 class Pizza {
-    name: string;
-    toppings: string[] = [];
+    public toppings: string[] = [];
 
-    constructor(name: string) {
-        this.name = name;
-    }
+    constructor(public name: string) {}
 
     addTopping(topping: string) {
         this.toppings.push(topping);
@@ -14,4 +11,5 @@ class Pizza {
 const pizza = new Pizza('Pepperoni');
 pizza.addTopping('pepperoni');
 
+console.log(pizza.name);
 console.log(pizza);
